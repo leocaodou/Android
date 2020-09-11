@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
                 String x = show2.getText().toString();
                 show1.setText(x);
                 x += '#';
-                String y = evaluate(x);
+                String y = evaluate(x).toString();
                 show2.setText(y);
             }
         });
@@ -273,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
             case '+' : return a.add(b);
             case '-' : return a.subtract(b);
             case 'x' : return a.multiply(b);
-            case '÷' : return a.divide(b);
+            case '÷' : return a.divide(b,9,BigDecimal.ROUND_HALF_UP);
             default :return x;
         }
     }
