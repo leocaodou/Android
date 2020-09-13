@@ -41,7 +41,7 @@
         android:id="@+id/buC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="弹出对话框"
+        android:text="弹出登陆框"
         app:layout_constraintBottom_toTopOf="@+id/buA"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -55,5 +55,60 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/buC"
+        tools:ignore="MissingConstraints"/>
+
+    <Button
+        android:id="@+id/buE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="启动复读机"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buD"
+        tools:ignore="MissingConstraints"/>
+    <Button
+        android:id="@+id/buF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="拨打10086"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buE"
+        tools:ignore="MissingConstraints"/>
+    <Button
+        android:id="@+id/buG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="保存刘科宏和其学号"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/num"
+        tools:ignore="MissingConstraints"/>
+    <Button
+        android:id="@+id/buH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示学生姓名和学号"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buG"
+        tools:ignore="MissingConstraints"/>
+    <Button
+        android:id="@+id/buI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="保存刘科宏和其学号到文件"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buH"
+        tools:ignore="MissingConstraints"/>
+    <Button
+        android:id="@+id/buJ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示文件中学生姓名和学号"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buI"
         tools:ignore="MissingConstraints"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
