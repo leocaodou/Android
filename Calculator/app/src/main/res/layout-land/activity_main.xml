@@ -51,7 +51,7 @@
             android:background="#ffffff"
             android:text="C"
             android:textColor="#EF1B1B"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
         <Button
             android:id="@+id/op2"
@@ -59,7 +59,7 @@
             android:background="#ffffff"
             android:text="⇦"
             android:textColor="#F33030"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
         <Button
             android:id="@+id/op3"
@@ -67,7 +67,7 @@
             android:background="#ffffff"
             android:text="("
             android:textColor="#97EC88"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
         <Button
             android:id="@+id/op4"
@@ -75,7 +75,7 @@
             android:background="#ffffff"
             android:text=")"
             android:textColor="#97EC88"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
         <Button
             android:id="@+id/op5"
@@ -83,7 +83,7 @@
             android:background="#ffffff"
             android:text="+"
             android:textColor="#EF9712"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
         <Button
             android:id="@+id/op6"
@@ -91,7 +91,7 @@
             android:background="#ffffff"
             android:text="-"
             android:textColor="#EF9712"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
         <Button
             android:id="@+id/op7"
@@ -100,7 +100,7 @@
             android:text="x"
             android:textAllCaps="false"
             android:textColor="#EF9712"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
         <Button
             android:id="@+id/op8"
@@ -109,14 +109,14 @@
             android:text="÷"
             android:textAllCaps="false"
             android:textColor="#EF9712"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
         <Button
             android:id="@+id/num1"
             android:layout_gravity="fill"
             android:background="#ffffff"
             android:text="1"
             android:textColor="#717171"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
 
         <Button
@@ -125,7 +125,7 @@
             android:background="#ffffff"
             android:text="2"
             android:textColor="#717171"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
         <Button
             android:id="@+id/num3"
@@ -133,8 +133,55 @@
             android:background="#ffffff"
             android:text="3"
             android:textColor="#717171"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
+        <Button
+            android:id="@+id/num10"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="."
+            android:textColor="#717171"
+            android:textSize="39sp" />
+
+        <Button
+            android:id="@+id/op10"
+            android:layout_columnSpan="1"
+            android:layout_gravity="fill"
+            android:background="#FFFFFF"
+            android:text="sin"
+            android:textAllCaps="false"
+            android:textColor="#717171"
+            android:textSize="39sp" />
+
+        <Button
+            android:id="@+id/op11"
+            android:layout_columnSpan="1"
+            android:layout_gravity="fill"
+            android:background="#FFFFFF"
+            android:text="cos"
+            android:textAllCaps="false"
+            android:textColor="#717171"
+            android:textSize="39sp" />
+
+        <Button
+            android:id="@+id/op12"
+            android:layout_columnSpan="1"
+            android:layout_gravity="fill"
+            android:background="#FFFFFF"
+            android:text="tan"
+            android:textAllCaps="false"
+            android:textColor="#717171"
+            android:textSize="39sp" />
+
+        <Button
+            android:id="@+id/op13"
+            android:layout_columnSpan="1"
+            android:layout_gravity="fill"
+            android:background="#FFFFFF"
+            android:text="ln"
+            android:textAllCaps="false"
+            android:textColor="#717171"
+            android:textSize="39sp" />
 
 
         <Button
@@ -143,7 +190,9 @@
             android:background="#ffffff"
             android:text="4"
             android:textColor="#717171"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
+
+
 
         <Button
             android:id="@+id/num5"
@@ -151,7 +200,7 @@
             android:background="#ffffff"
             android:text="5"
             android:textColor="#717171"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
         <Button
             android:id="@+id/num6"
@@ -159,7 +208,60 @@
             android:background="#ffffff"
             android:text="6"
             android:textColor="#717171"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
+
+        <Button
+            android:id="@+id/num11"
+            android:layout_rowSpan="1"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="0"
+            android:textColor="#717171"
+            android:textSize="39sp" />
+        <Button
+            android:id="@+id/op14"
+            android:layout_columnSpan="1"
+            android:layout_gravity="fill"
+            android:background="#FFFFFF"
+            android:text="^"
+            android:textAllCaps="false"
+            android:textColor="#717171"
+            android:textSize="39sp" />
+
+
+        <Button
+            android:id="@+id/op15"
+            android:layout_columnSpan="1"
+            android:layout_gravity="fill"
+            android:background="#FFFFFF"
+            android:text="π"
+            android:textAllCaps="false"
+            android:textColor="#717171"
+            android:textSize="39sp" />
+
+        <Button
+            android:id="@+id/op16"
+            android:layout_columnSpan="1"
+            android:layout_gravity="fill"
+            android:background="#FFFFFF"
+            android:text="√"
+            android:textAllCaps="false"
+            android:textColor="#717171"
+            android:textSize="39sp" />
+
+        <Button
+            android:id="@+id/op17"
+            android:layout_columnSpan="1"
+            android:layout_gravity="fill"
+            android:background="#FFFFFF"
+            android:text="◱"
+            android:textAllCaps="false"
+            android:textColor="#717171"
+            android:textSize="39sp" />
+
+
+
+
 
 
         <Button
@@ -168,7 +270,7 @@
             android:background="#ffffff"
             android:text="7"
             android:textColor="#717171"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
         <Button
             android:id="@+id/num8"
@@ -176,7 +278,7 @@
             android:background="#ffffff"
             android:text="8"
             android:textColor="#717171"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
         <Button
             android:id="@+id/num9"
@@ -184,25 +286,8 @@
             android:background="#ffffff"
             android:text="9"
             android:textColor="#717171"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
-
-        <Button
-            android:id="@+id/num10"
-            android:layout_gravity="fill"
-            android:background="#ffffff"
-            android:text="."
-            android:textColor="#717171"
-            android:textSize="50sp" />
-
-        <Button
-            android:id="@+id/num11"
-            android:layout_rowSpan="2"
-            android:layout_gravity="fill"
-            android:background="#ffffff"
-            android:text="0"
-            android:textColor="#717171"
-            android:textSize="50sp" />
 
         <Button
             android:id="@+id/num12"
@@ -212,7 +297,7 @@
             android:text="00"
             android:textAllCaps="false"
             android:textColor="#717171"
-            android:textSize="50sp" />
+            android:textSize="39sp" />
 
 
         <Button
@@ -223,7 +308,8 @@
             android:text="="
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
-            android:textSize="55sp" />
+            android:textSize="39sp" />
+
     </GridLayout>
 
 

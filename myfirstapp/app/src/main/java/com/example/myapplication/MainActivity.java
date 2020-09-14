@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     Button bn1;
     Button bn2;
     Button bn3;
-    Button bn4,bn5,bn6,bn7,bn8,bn9,bn10;
+    Button bn4,bn5,bn6,bn7,bn8,bn9,bn10,bn11;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     private final static String SharedPreferenceFileName = "NI";
@@ -200,6 +202,38 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
+                }
+            }
+        });
+        bn11 = (Button) findViewById(R.id.buK);
+        preferences = getSharedPreferences(SharedPreferenceFileName,MODE_PRIVATE);
+        editor = preferences.edit();
+        bn11.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view) {
+                Cursor cursor = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI,null,null,null,null);
+                while(cursor.moveToNext())
+                {
+                    String msg;
+                    String id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+                    msg = "id" + id;
+                    String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                    msg = msg + "name" + name;
+                    Cursor pns = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=" + id,null,null);
+                    while(pns.moveToNext())
+                    {
+                        String pn = pns.getString(pns.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                        msg = msg + "phone:" + pn;
+
+                    }
+                    Cursor emails = getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI,null,ContactsContract.CommonDataKinds.Email.CONTACT_ID + "=" + id,null,null);
+                    while(emails.moveToNext())
+                    {
+                        String email = emails.getString(emails.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
+                        msg = msg + "Email:" + email;
+
+                    }
+                    Log.v("TAG",msg);
                 }
             }
         });

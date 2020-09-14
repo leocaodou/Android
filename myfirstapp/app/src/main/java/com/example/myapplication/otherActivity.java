@@ -17,16 +17,16 @@ public class otherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_other);
         Button bn = (Button)findViewById(R.id.bu);
         Log.v("otherActivity","这是onCreate()");
-        Intent data=getIntent();
+        final Intent data=getIntent();
         String str = data.getStringExtra("a");
         Toast.makeText(this,"欢迎您，"+str,Toast.LENGTH_LONG).show();
         bn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent=getIntent();
-                String name=intent.getStringExtra("name");
-                Integer age=intent.getIntExtra("age",20);
-                intent.putExtra("result","姓名"+name+"年龄"+age);
-                setResult(0,intent);
+
+                String name=data.getStringExtra("name");
+                Integer age=data.getIntExtra("age",20);
+                data.putExtra("result","姓名"+name+"年龄"+age);
+                setResult(0,data);
                 finish();
             }
         });
