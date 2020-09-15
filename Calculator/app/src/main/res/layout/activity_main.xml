@@ -4,11 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#FFFFFF">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="45dp"
+        >
+        <Button
+            android:id="@+id/sc1"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="计算"
+            android:textColor="#7A6D6D"
+            android:textSize="50sp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="50dp"
+            />
+        <Button
+            android:id="@+id/sc2"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="换算"
+            android:textColor="#7A6D6D"
+            android:textSize="50sp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/g1"
         android:gravity="right"
@@ -29,7 +57,7 @@
             android:layout_row="0"
             android:gravity="right"
             android:maxLines="1"
-            android:scrollbars="horizontal"
+            android:scrollHorizontally="true"
             android:textSize="65sp"
             />
     </LinearLayout>
@@ -40,7 +68,6 @@
         android:columnCount="4"
         android:rowCount="6"
         android:orientation="horizontal"
-        tools:ignore="MissingConstraints"
         android:id="@+id/g1"
         >
 
@@ -169,7 +196,7 @@
             android:id="@+id/op7"
             android:layout_gravity="fill"
             android:background="#ffffff"
-            android:text="x"
+            android:text="×"
             android:textAllCaps="false"
             android:textColor="#EF9712"
             android:textSize="50sp" />

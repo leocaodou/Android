@@ -97,7 +97,7 @@
             android:id="@+id/op7"
             android:layout_gravity="fill"
             android:background="#ffffff"
-            android:text="x"
+            android:text="×"
             android:textAllCaps="false"
             android:textColor="#EF9712"
             android:textSize="39sp" />

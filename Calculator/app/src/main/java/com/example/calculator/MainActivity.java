@@ -3,11 +3,15 @@ package com.example.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.calculator.eva.evaluate;
 
@@ -18,17 +22,20 @@ public class MainActivity extends AppCompatActivity {
     TextView show1;
     TextView show2;
     Button num1,num2,num3,num4,num5,num6,num7,num8,num9,num10,num11,num12;
-    Button op1,op2,op3,op4,op5,op6,op7,op8,op9;
+    Button op1,op2,op3,op4,op5,op6,op7,op8,op9,op10,op11,op12,op13,op14,op15,op16,op17;
+    Button sc1,sc2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         show1 = findViewById(R.id.text1);
         show2 = findViewById(R.id.text2);
-        show1.setMovementMethod(new ScrollingMovementMethod());
+        show1.setMovementMethod(ScrollingMovementMethod.getInstance());
         show1.setHorizontallyScrolling(true);
-        show2.setMovementMethod(new ScrollingMovementMethod());
+        show1.setFocusable(true);
+        show2.setMovementMethod(ScrollingMovementMethod.getInstance());
         show2.setHorizontallyScrolling(true);
+        show2.setFocusable(true);
         int line = show1.getLineCount();
         if (line > 9) {
             int offset = show1.getLineCount() * show1.getLineHeight();
@@ -238,6 +245,88 @@ public class MainActivity extends AppCompatActivity {
                 show2.setText(y);
             }
         });
+        Configuration mConfiguration = this.getResources().getConfiguration();
+        int ori = mConfiguration.orientation;
+        if (ori == mConfiguration.ORIENTATION_LANDSCAPE) {
+            op10 = (Button) findViewById(R.id.op10);
+            op10.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String x = show2.getText().toString() + "sin";
+                    show2.setText(x);
+                }
+            });
+            op11 = (Button) findViewById(R.id.op11);
+            op11.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String x = show2.getText().toString() + "cos";
+                    show2.setText(x);
+                }
+            });
+            op12 = (Button) findViewById(R.id.op12);
+            op12.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String x = show2.getText().toString() + "tan";
+                    show2.setText(x);
+                }
+            });
+            op13 = (Button) findViewById(R.id.op13);
+            op13.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String x = show2.getText().toString() + "ln";
+                    show2.setText(x);
+                }
+            });
+            op14 = (Button) findViewById(R.id.op14);
+            op14.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String x = show2.getText().toString() + "^";
+                    show2.setText(x);
+                }
+            });
+            op15 = (Button) findViewById(R.id.op15);
+            op15.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String x = show2.getText().toString() + "π";
+                    show2.setText(x);
+                }
+            });
+            op16 = (Button) findViewById(R.id.op16);
+            op16.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String x = show2.getText().toString() + "√";
+                    show2.setText(x);
+                }
+            });
+            op17 = (Button) findViewById(R.id.op17);
+            op17.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String x = show2.getText().toString() + "π";
+                    show2.setText(x);
+                }
+            });
+        }
+        else {
+            sc1 = (Button) findViewById(R.id.sc1);
+            sc1.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                }
+            });
+            sc2 = (Button) findViewById(R.id.sc2);
+            sc2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showPopupMenu(sc2);
+                }
+            });
+        }
     }
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
@@ -246,4 +335,22 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putString("show2",show2.getText().toString());
     }
 
+    private void showPopupMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.getMenuInflater().inflate(R.menu.popupmenu, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+        popupMenu.setOnDismissListener(new PopupMenu.OnDismissListener() {
+            @Override
+            public void onDismiss(PopupMenu menu) {
+                Toast.makeText(getApplicationContext(), "关闭PopupMenu", Toast.LENGTH_SHORT).show();
+            }
+        });
+        popupMenu.show();
+    }
 }
