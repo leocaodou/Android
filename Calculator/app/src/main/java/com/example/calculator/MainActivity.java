@@ -3,6 +3,7 @@ package com.example.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TextView show1;
     TextView show2;
     Button num1,num2,num3,num4,num5,num6,num7,num8,num9,num10,num11,num12;
-    Button op1,op2,op3,op4,op5,op6,op7,op8,op9,op10,op11,op12,op13,op14,op15,op16,op17;
+    Button op1,op2,op3,op4,op5,op6,op7,op8,op9,op10,opnum,op12,op13,op14,op15,op16,op17;
     Button sc1,sc2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +31,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         show1 = findViewById(R.id.text1);
         show2 = findViewById(R.id.text2);
-        show1.setMovementMethod(ScrollingMovementMethod.getInstance());
+        Configuration mConfiguration = this.getResources().getConfiguration();
+        int ori = mConfiguration.orientation;
+        int num = 11;
+        if (ori == mConfiguration.ORIENTATION_LANDSCAPE) {
+            num = 18;
+        }
+        final float textsize = 65;
+
+
+        final int[] d = {0};
         show1.setHorizontallyScrolling(true);
-        show1.setFocusable(true);
-        show2.setMovementMethod(ScrollingMovementMethod.getInstance());
-        show2.setHorizontallyScrolling(true);
-        show2.setFocusable(true);
+        show1.setMovementMethod(ScrollingMovementMethod.getInstance());
         int line = show1.getLineCount();
         if (line > 9) {
             int offset = show1.getLineCount() * show1.getLineHeight();
@@ -51,11 +58,16 @@ public class MainActivity extends AppCompatActivity {
             show2.setText(savedInstanceState.getString("show2"));
         }
         num1 = (Button) findViewById(R.id.num1);
+        final int finalNum = num;
         num1.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '1';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -65,6 +77,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '2';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -74,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '3';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -83,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '4';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -92,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '5';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -101,6 +129,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '6';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -110,6 +142,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '7';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -119,6 +155,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '8';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -128,6 +168,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '9';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -137,6 +181,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '.';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -146,6 +194,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '0';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -155,6 +207,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + "00";
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -163,9 +219,10 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View view) {
-                String x= null;
-                show1.setText(x);
-                show2.setText(x);
+                show1.setText(null);
+                show2.setText(null);
+                d[0] = 0;
+                show2.setTextSize(textsize);
             }
         });
         op2 = (Button) findViewById(R.id.op2);
@@ -177,6 +234,10 @@ public class MainActivity extends AppCompatActivity {
                 if(x.length()!=0)
                     x=x.substring(0,x.length()-1);
                 show2.setText(x);
+                if(x.length() < finalNum * Math.pow(1.3, d[0]-1) && d[0] != 0) {
+                    d[0]--;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
             }
         });
         op3 = (Button) findViewById(R.id.op3);
@@ -185,6 +246,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '(';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -194,6 +259,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + ')';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -203,6 +272,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '+';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -212,6 +285,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '-';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -221,6 +298,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + 'x';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -230,6 +311,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x= show2.getText().toString() + '÷';
+                if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                    d[0]++;
+                    show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                }
                 show2.setText(x);
             }
         });
@@ -245,22 +330,29 @@ public class MainActivity extends AppCompatActivity {
                 show2.setText(y);
             }
         });
-        Configuration mConfiguration = this.getResources().getConfiguration();
-        int ori = mConfiguration.orientation;
+
         if (ori == mConfiguration.ORIENTATION_LANDSCAPE) {
             op10 = (Button) findViewById(R.id.op10);
             op10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String x = show2.getText().toString() + "sin";
+                    if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                        d[0]++;
+                        show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                    }
                     show2.setText(x);
                 }
             });
-            op11 = (Button) findViewById(R.id.op11);
-            op11.setOnClickListener(new View.OnClickListener() {
+            opnum = (Button) findViewById(R.id.op11);
+            opnum.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String x = show2.getText().toString() + "cos";
+                    if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                        d[0]++;
+                        show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                    }
                     show2.setText(x);
                 }
             });
@@ -269,6 +361,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     String x = show2.getText().toString() + "tan";
+                    if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                        d[0]++;
+                        show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                    }
                     show2.setText(x);
                 }
             });
@@ -277,6 +373,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     String x = show2.getText().toString() + "ln";
+                    if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                        d[0]++;
+                        show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                    }
                     show2.setText(x);
                 }
             });
@@ -285,6 +385,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     String x = show2.getText().toString() + "^";
+                    if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                        d[0]++;
+                        show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                    }
                     show2.setText(x);
                 }
             });
@@ -293,6 +397,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     String x = show2.getText().toString() + "π";
+                    if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                        d[0]++;
+                        show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                    }
                     show2.setText(x);
                 }
             });
@@ -301,6 +409,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     String x = show2.getText().toString() + "√";
+                    if(x.length() > finalNum * Math.pow(1.3, d[0])) {
+                        d[0]++;
+                        show2.setTextSize(textsize / (float)Math.pow(1.3, d[0]) );
+                    }
                     show2.setText(x);
                 }
             });
@@ -308,8 +420,8 @@ public class MainActivity extends AppCompatActivity {
             op17.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String x = show2.getText().toString() + "π";
-                    show2.setText(x);
+                    Intent intent = new Intent(MainActivity.this,transform.class);
+                    startActivityForResult(intent,0);
                 }
             });
         }
@@ -317,13 +429,15 @@ public class MainActivity extends AppCompatActivity {
             sc1 = (Button) findViewById(R.id.sc1);
             sc1.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
+
                 }
             });
             sc2 = (Button) findViewById(R.id.sc2);
             sc2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    showPopupMenu(sc2);
+                    Intent intent = new Intent(MainActivity.this,transform.class);
+                    startActivityForResult(intent,0);
                 }
             });
         }

@@ -22,37 +22,37 @@ public class evaluate {
             return x;
         }
     }
-    public static int lp(char x)
+    public static int lp(String x)
     {
         switch(x)
         {
-            case '+' :
-            case '-' :
+            case "+" :
+            case "-" :
                 return 3;
-            case 'x' :
-            case '÷' :
-            case '^' :
+            case "x" :
+            case "÷" :
+            case "^" :
                 return 5;
-            case '(' : return 1;
-            case ')' : return 6;
-            case '#' : return 0;
+            case "(" : return 1;
+            case ")" : return 6;
+            case "#" : return 0;
             default :return -1;
         }
     }
-    public static int rp(char x)
+    public static int rp(String x)
     {
         switch(x)
         {
-            case '+' :
-            case '-' :
+            case "+" :
+            case "-" :
                 return 2;
-            case 'x' :
-            case '÷' :
-            case '^' :
+            case "x" :
+            case "÷" :
+            case "^" :
                 return 4;
-            case '(' : return 6;
-            case ')' : return 1;
-            case '#' : return 0;
+            case "(" : return 6;
+            case ")" : return 1;
+            case "#" : return 0;
             default :return -1;
         }
     }
@@ -117,7 +117,7 @@ public class evaluate {
                     }
                     num.push(xi.add(zh));//把小数和整数合并为这段数
                 }
-                if(op.peek().equals("sin") || op.peek().equals("cos") || op.peek().equals("tan") || op.peek().equals("ln") || op.peek().equals("√"))
+                if(String.valueOf(op.peek()).equals("sin") || String.valueOf(op.peek()).equals("cos") || String.valueOf(op.peek()).equals("tan") || String.valueOf(op.peek()).equals("ln") || String.valueOf(op.peek()).equals("√"))
                 {
                     BigDecimal x = (BigDecimal)num.peek();
                     double y = x.doubleValue();
@@ -173,7 +173,7 @@ public class evaluate {
                 {
                     return num.peek().toString();//运算符栈空，直接输出结果
                 }
-                if(lp(a.charAt(i)) == 0 && l != r)
+                if(lp(String.valueOf(a.charAt(i))) == 0 && l != r)
                 {
                     return "输入错误";
                 }
@@ -204,7 +204,7 @@ public class evaluate {
                 }
                 else {
                     while (true) {
-                        if (lp((char) op.peek()) > rp(a.charAt(i)))//当前的符号右优先级如果小于栈顶的符号的左优先级，开始运算
+                        if (lp(String.valueOf(op.peek())) > rp(String.valueOf(a.charAt(i))))//当前的符号右优先级如果小于栈顶的符号的左优先级，开始运算
                         {
                             if (num.empty())
                                 return "输入错误";
@@ -222,9 +222,49 @@ public class evaluate {
                     }
 
                 if(!op.empty()) {
-                    if (lp(a.charAt(i)) == rp((char)op.peek()))//消除左右括号以及#
+                    if (lp(String.valueOf(a.charAt(i))) == rp(String.valueOf( op.peek())))//消除左右括号以及#
                     {
                         op.pop();
+                        if(!op.empty())
+                        if(String.valueOf(op.peek()).equals("sin") || String.valueOf(op.peek()).equals("cos") || String.valueOf(op.peek()).equals("tan") || String.valueOf(op.peek()).equals("ln") || String.valueOf(op.peek()).equals("√"))
+                        {
+                            BigDecimal x = (BigDecimal)num.peek();
+                            double y = x.doubleValue();
+                            double f = Math.toRadians(y);
+                            switch(op.peek().toString())
+                            {
+                                case "sin" :
+                                    double g = Math.sin(f);
+                                    g = Math.round(g*100);
+                                    String z = String.valueOf(g/100);
+                                    x = new BigDecimal(z);
+                                    break;
+                                case "cos" :
+                                    g = Math.cos(f);
+                                    g = Math.round(g*100);
+                                    z = String.valueOf(g/100);
+                                    x = new BigDecimal(z);
+                                    break;
+                                case "tan" :
+                                    g = Math.tan(f);
+                                    g = Math.round(g*100);
+                                    z = String.valueOf(g/100);
+                                    x = new BigDecimal(z);
+                                    break;
+                                case "ln" :
+                                    if(((BigDecimal)num.peek()).doubleValue() > 0)
+                                        x = new BigDecimal(Math.log(((BigDecimal)num.peek()).doubleValue()));
+                                    else
+                                        return "不能求负数或0的对数";
+                                    break;
+                                case "√" :
+                                    x = standardDeviation((BigDecimal)num.peek(),9);
+                                    break;
+                            }
+                            num.pop();
+                            op.pop();
+                            num.push(x);
+                        }
                     }
                     else
                         op.push(a.charAt(i));
@@ -234,6 +274,9 @@ public class evaluate {
                 }
             }
         }
-        return num.peek().toString();
+        if(op.empty())
+            return num.peek().toString();
+        else
+            return "输入错误";
     }
 }

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/line2"
+        android:id="@+id/line1"
+        >
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toStartOf="@+id/num31"
+            android:entries="@array/volume"
+            android:id="@+id/se5"
+            android:theme="@style/itemSpinnerStyle"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/getnum31"
+            android:text=""
+            android:gravity="right"
+            app:layout_constraintStart_toEndOf="@+id/sc1"
+            android:textSize="45sp"
+            android:maxLines="1"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/g1"
+        android:id="@+id/line2"
+        android:layout_marginBottom="30dp"
+        >
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toStartOf="@+id/num31"
+            android:entries="@array/volume"
+            android:id="@+id/se6"
+            android:theme="@style/itemSpinnerStyle"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/getnum32"
+            android:gravity="right"
+            app:layout_constraintStart_toEndOf="@+id/sc1"
+            android:textSize="45sp"
+            android:maxLines="1"
+            />
+    </LinearLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:columnCount="4"
+        android:rowCount="4"
+        android:orientation="horizontal"
+        android:id="@+id/g1"
+        >
+
+        <Button
+            android:id="@+id/num31"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="1"
+            android:textColor="#717171"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/num32"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="2"
+            android:textColor="#717171"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/num33"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="3"
+            android:textColor="#717171"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/op31"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="C"
+            android:layout_rowSpan="2"
+            android:textColor="#EF1B1B"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/num34"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="4"
+            android:textColor="#717171"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/num35"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="5"
+            android:textColor="#717171"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/num36"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="6"
+            android:textColor="#717171"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/num37"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="7"
+            android:textColor="#717171"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/num38"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="8"
+            android:textColor="#717171"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/num39"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="9"
+            android:textColor="#717171"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/op32"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="⇦"
+            android:layout_rowSpan="2"
+            android:textColor="#F33030"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/num310"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="."
+            android:textColor="#717171"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/num311"
+            android:layout_rowSpan="2"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="0"
+            android:textColor="#717171"
+            android:textSize="60sp" />
+
+        <Button
+            android:id="@+id/num312"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill"
+            android:background="#ffffff"
+            android:text="00"
+            android:textAllCaps="false"
+            android:textColor="#717171"
+            android:textSize="60sp" />
+
+
+    </GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
