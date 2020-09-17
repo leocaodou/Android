@@ -2,4 +2,5 @@
     <string name="app_name">Calculator</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="HelpString">·此计算器竖屏为科学计算器\n·计算器的汇率更新于9月17日\n·目前已知bug：计算器输入框的上方的算式显示框需要滑动后才显示</string>
 </resources>

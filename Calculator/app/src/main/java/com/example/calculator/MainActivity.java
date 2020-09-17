@@ -1,15 +1,19 @@
 package com.example.calculator;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     Button num1,num2,num3,num4,num5,num6,num7,num8,num9,num10,num11,num12;
     Button op1,op2,op3,op4,op5,op6,op7,op8,op9,op10,opnum,op12,op13,op14,op15,op16,op17;
     Button sc1,sc2;
+    Button help;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -440,6 +445,24 @@ public class MainActivity extends AppCompatActivity {
                     startActivityForResult(intent,0);
                 }
             });
+            help = (Button) findViewById(R.id.help);
+            help.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder builder=
+                            new AlertDialog.Builder(MainActivity.this);
+                    final View viewDialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.dialog,null,false);
+                    builder.setTitle("帮助")
+                            .setView(viewDialog)
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                }
+                            });
+                    builder.create().show();
+                }
+            });
         }
     }
     @Override
@@ -449,22 +472,22 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putString("show2",show2.getText().toString());
     }
 
-    private void showPopupMenu(View view) {
-        PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.getMenuInflater().inflate(R.menu.popupmenu, popupMenu.getMenu());
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
-        popupMenu.setOnDismissListener(new PopupMenu.OnDismissListener() {
-            @Override
-            public void onDismiss(PopupMenu menu) {
-                Toast.makeText(getApplicationContext(), "关闭PopupMenu", Toast.LENGTH_SHORT).show();
-            }
-        });
-        popupMenu.show();
-    }
+//    private void showPopupMenu(View view) {           //菜单
+//        PopupMenu popupMenu = new PopupMenu(this, view);
+//        popupMenu.getMenuInflater().inflate(R.menu.popupmenu, popupMenu.getMenu());
+//        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
+//                return false;
+//            }
+//        });
+//        popupMenu.setOnDismissListener(new PopupMenu.OnDismissListener() {
+//            @Override
+//            public void onDismiss(PopupMenu menu) {
+//                Toast.makeText(getApplicationContext(), "关闭PopupMenu", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        popupMenu.show();
+//    }
 }
