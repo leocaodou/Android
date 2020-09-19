@@ -39,15 +39,14 @@ public class MainActivity extends AppCompatActivity {
         Configuration mConfiguration = this.getResources().getConfiguration();
         int ori = mConfiguration.orientation;
         int num = 11;
-        if (ori == mConfiguration.ORIENTATION_LANDSCAPE) {
+        if (ori == Configuration.ORIENTATION_LANDSCAPE) {
             num = 18;
         }
         final float textsize = 65;
-
-
+        final float textsize2 = 85;
+        final int[] d2 = {0};
+        int numt = 8;
         final int[] d = {0};
-        show1.setHorizontallyScrolling(true);
-        show1.setMovementMethod(ScrollingMovementMethod.getInstance());
         int line = show1.getLineCount();
         if (line > 9) {
             int offset = show1.getLineCount() * show1.getLineHeight();
@@ -64,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         }
         num1 = (Button) findViewById(R.id.num1);
         final int finalNum = num;
+        final int finalNumt = numt;
         num1.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -329,6 +329,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String x = show2.getText().toString();
+                double l = x.length();
+                int d = 0;
+                while(l+1 > finalNumt){
+                    l /= 1.3;
+                    d++;
+                }
+                show1.setTextSize(textsize2 / (float)Math.pow(1.3, d) );
                 show1.setText(x + '=');
                 x += '#';
                 String y = evaluate.evaluate(x).toString();
@@ -336,7 +343,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (ori == mConfiguration.ORIENTATION_LANDSCAPE) {
+        if (ori == Configuration.ORIENTATION_LANDSCAPE) {
             op10 = (Button) findViewById(R.id.op10);
             op10.setOnClickListener(new View.OnClickListener() {
                 @Override
