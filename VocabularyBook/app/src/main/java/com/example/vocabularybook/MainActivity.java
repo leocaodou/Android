@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
         }).create().show();
     }
     private void SearchDialog(){
-        final TableLayout tableLayout = (TableLayout) getLayoutInflater().inflate(R.layout.search,null);
+        final TableLayout tableLayout = (TableLayout) getLayoutInflater().inflate(R.layout.searchterm,null);
         new AlertDialog.Builder(this)
                 .setTitle("查找单词")
                 .setView(tableLayout)

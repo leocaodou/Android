@@ -16,6 +16,7 @@ public class WordsDBHelper extends SQLiteOpenHelper {
 
     public WordsDBHelper(@Nullable Context context) {
         super(context,DATEBASE_NAME,null,DATEBASE_VERSION);
+
     }
 
     @Override
@@ -28,5 +29,5 @@ public class WordsDBHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_DATEBASE);
         onCreate(db);
     }
-
+    
 }
