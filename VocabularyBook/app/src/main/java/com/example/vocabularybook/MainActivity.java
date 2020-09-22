@@ -9,7 +9,10 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 
 import com.example.vocabularybook.wordcontract.Words;
@@ -74,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
     }
 
     private void InsertDialog(){
-        final TableLayout tableLayout = (TableLayout)getLayoutInflater().inflate(R.layout.insert,null);
-        new AlertDialog.Builder(this).setTitle("新增单词").setView(tableLayout).
+        final LinearLayout tableLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.insert,null);
+        new AlertDialog.Builder(MainActivity.this).setTitle("新增单词").setView(tableLayout).
                 setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -139,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
         }).create().show();
     }
     private void SearchDialog(){
-        final TableLayout tableLayout = (TableLayout) getLayoutInflater().inflate(R.layout.searchterm,null);
+        final LinearLayout tableLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.searchterm,null);
         new AlertDialog.Builder(this)
                 .setTitle("查找单词")
                 .setView(tableLayout)
@@ -166,5 +169,26 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
     private void ReFreshWordItemFragment(String strWord){
         WordItemFragment wordItemFragment = (WordItemFragment)getSupportFragmentManager().findFragmentById(R.id.wordlist);
         wordItemFragment.refreshWordsList(strWord);
+    }
+
+    //创建菜单
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.mianmenu,menu);
+        return true;
+    }
+
+    //菜单点击事件
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_Insert:
+                InsertDialog();
+                break;
+            case R.id.action_Search:
+                SearchDialog();
+                break;
+        }
+        return  true;
     }
 }
