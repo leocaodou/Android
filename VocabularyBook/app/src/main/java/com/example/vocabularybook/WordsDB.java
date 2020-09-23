@@ -55,12 +55,9 @@ public class WordsDB {
 //
 //    }
     public void Insert(String strWord,String strMeaning, String strSample){
-        ContentValues cv=new ContentValues();
-        cv.put(Words.Word.COLUMN_NAME_WORD,strWord);
-        cv.put(Words.Word.COLUMN_NAME_MEANING,strMeaning);
-        cv.put(Words.Word.COLUMN_NAME_SAMPLE,strSample);
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
-        db.insert(Words.Word.TABLE_NAME,null,cv);
+        String sql = "insert into " + Words.Word.TABLE_NAME + " (" + Words.Word.COLUMN_NAME_WORD + "," +  Words.Word.COLUMN_NAME_MEANING + "," + Words.Word.COLUMN_NAME_SAMPLE + ") values( '" + strWord + "','" + strMeaning + "','" + strSample + "')";
+        db.execSQL(sql);
     }
     public void DeleteUserSql(String strId){
         SQLiteDatabase db = mDbHelper.getReadableDatabase();

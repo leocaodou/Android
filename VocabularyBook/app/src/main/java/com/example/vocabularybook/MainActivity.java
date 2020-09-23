@@ -2,6 +2,7 @@ package com.example.vocabularybook;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.ListFragment;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -163,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
     }
 
     private void ReFreshWordItemFragment(){
-        WordItemFragment wordItemFragment = (WordItemFragment)getSupportFragmentManager().findFragmentById(R.id.wordlist);
+        WordItemFragment wordItemFragment = (WordItemFragment) getSupportFragmentManager().findFragmentById(R.id.wordlist);
         wordItemFragment.refreshWordsList();
     }
     private void ReFreshWordItemFragment(String strWord){
