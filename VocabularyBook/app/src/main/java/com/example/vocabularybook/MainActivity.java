@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
             ChangeWordDetailFragment(id);
         }
         else {
-            Intent intent = new Intent(MainActivity.this,WordDetailFragment.class);
+            Intent intent = new Intent(MainActivity.this,WordDetailActivity.class);
             intent.putExtra(WordDetailFragment.ARG_ID,id);
             startActivity(intent);
         }

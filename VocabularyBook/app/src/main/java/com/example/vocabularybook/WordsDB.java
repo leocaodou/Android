@@ -38,12 +38,11 @@ public class WordsDB {
         ArrayList<Map<String,String>> arr = new ArrayList();
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
         Cursor c;
-        c = db.rawQuery("SELECT _ID, word FROM "+ Words.Word.TABLE_NAME,new String[]{});
-        c.moveToFirst();
-        while(!c.isAfterLast()){
+        c = db.rawQuery("SELECT " +Words.Word._ID + "," + Words.Word.COLUMN_NAME_WORD + " FROM "+ Words.Word.TABLE_NAME,new String[]{});
+        while(c.moveToNext()){
             Map<String,String> map = new HashMap<>();
-            map.put(Words.Word._ID,c.getString(1));
-            map.put(Words.Word.COLUMN_NAME_WORD,c.getString(2));
+            map.put(Words.Word._ID,c.getString(0));
+            map.put(Words.Word.COLUMN_NAME_WORD,c.getString(1));
             arr.add(map);
         }
         return arr;

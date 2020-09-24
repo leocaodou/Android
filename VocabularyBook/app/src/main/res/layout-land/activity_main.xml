@@ -6,19 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="horizontal">
-    <LinearLayout
+    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:id="@+id/wordlist"
-        android:orientation="horizontal">
-    </LinearLayout>
+        android:orientation="horizontal"
+        android:name="com.example.vocabularybook.WordItemFragment">
+    </fragment>
 
-    <LinearLayout
+    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:id="@+id/worddetail"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        android:name="com.example.vocabularybook.WordDetailFragment"/>
 
 </LinearLayout>

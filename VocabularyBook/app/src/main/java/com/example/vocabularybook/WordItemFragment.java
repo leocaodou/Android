@@ -1,5 +1,6 @@
 package com.example.vocabularybook;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -78,7 +79,7 @@ public class WordItemFragment extends ListFragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState){
-        View view = super.onCreateView(inflater,container,savedInstanceState);
+        View view = inflater.inflate(R.layout.worditemfragment,container,false);
         ListView mListView = (ListView) view.findViewById(android.R.id.list);
         registerForContextMenu(mListView);
         return view;
