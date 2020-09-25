@@ -6,9 +6,9 @@ import java.util.UUID;
 
 public class Words {
     public static class WordItem{
-        public String id;
+        public int id;
         public String word;
-        public WordItem(String id,String word){
+        public WordItem(int id,String word){
             this.id=id;
             this.word=word;
         }
@@ -18,11 +18,11 @@ public class Words {
     }
 
     public static class WordDescription{
-        public String id;
+        public int id;
         public String word;
         public String meaning;
         public String sample;
-        public WordDescription(String id,String word,String meaning, String sample){
+        public WordDescription(int id,String word,String meaning, String sample){
             this.id=id;
             this.word=word;
             this.meaning=meaning;

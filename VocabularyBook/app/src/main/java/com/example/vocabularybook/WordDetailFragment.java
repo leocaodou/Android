@@ -54,7 +54,15 @@ public class WordDetailFragment extends Fragment {
                 textViewWordMeaning.setText("");
                 textViewWordSample.setText("");
             }
+        }else if(mID == null){
+            TextView textViewWord = (TextView)view.findViewById(R.id.word);
+            TextView textViewWordMeaning = (TextView)view.findViewById(R.id.wordmeaning);
+            TextView textViewWordSample = (TextView)view.findViewById(R.id.wordsample);
+            textViewWord.setText("");
+            textViewWordMeaning.setText("");
+            textViewWordSample.setText("");
         }
+
         return view;
     }
 }

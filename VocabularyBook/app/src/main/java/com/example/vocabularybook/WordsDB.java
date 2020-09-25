@@ -31,8 +31,9 @@ public class WordsDB {
     public Words.WordDescription getSingleWord(String id){
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
         Cursor c;
-        c = db.rawQuery("SELECT * FROM "+ Words.Word.TABLE_NAME + " where _ID = ?",new String[]{id});
-        return new Words.WordDescription(c.getString(1),c.getString(2),c.getString(3),c.getString(4));
+        c = db.rawQuery("SELECT * FROM "+ Words.Word.TABLE_NAME + " where " + Words.Word._ID + " = " + id,new String[]{});
+        c.moveToNext();
+        return new Words.WordDescription(c.getInt(0),c.getString(1),c.getString(2),c.getString(3));
     }
     public ArrayList<Map<String,String>> getAllWords(){
         ArrayList<Map<String,String>> arr = new ArrayList();
@@ -41,7 +42,7 @@ public class WordsDB {
         c = db.rawQuery("SELECT " +Words.Word._ID + "," + Words.Word.COLUMN_NAME_WORD + " FROM "+ Words.Word.TABLE_NAME,new String[]{});
         while(c.moveToNext()){
             Map<String,String> map = new HashMap<>();
-            map.put(Words.Word._ID,c.getString(0));
+            map.put(Words.Word._ID,String.valueOf(c.getInt(0)));
             map.put(Words.Word.COLUMN_NAME_WORD,c.getString(1));
             arr.add(map);
         }
@@ -60,19 +61,19 @@ public class WordsDB {
     }
     public void DeleteUserSql(String strId){
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
-        db.delete(Words.Word.TABLE_NAME, "_ID=?", new String[] { String.valueOf(strId)});
+        db.delete(Words.Word.TABLE_NAME, Words.Word._ID + "=?", new String[] {strId});
     }
 //    public void Delete(String strId){
 //
 //    }
-    public void UpdateUseSql(String strId,String strWord,String strMeaning,String strSample)
+    public void UpdateUseSql(int strId,String strWord,String strMeaning,String strSample)
     {
         ContentValues cv=new ContentValues();
         cv.put(Words.Word.COLUMN_NAME_WORD,strWord);
         cv.put(Words.Word.COLUMN_NAME_MEANING,strMeaning);
         cv.put(Words.Word.COLUMN_NAME_SAMPLE,strSample);
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
-        db.update(Words.Word.TABLE_NAME,cv,"_ID = ?, word = ?, meaning = ?, sample = ?" ,new String[]{strId,strWord,strMeaning,strSample});
+        db.update(Words.Word.TABLE_NAME,cv, Words.Word._ID + " = " + strId,new String[]{});
     }
 //    public void Update(String strId,String strWord,String strMeaning,String strSample)
 //    {
@@ -84,11 +85,10 @@ public class WordsDB {
         Cursor c;
         strWordSearch = '%' + strWordSearch + '%';
         c = db.rawQuery("SELECT _ID, word FROM "+ Words.Word.TABLE_NAME + " where word like " + "'" + strWordSearch + "'",new String[]{});
-        c.moveToFirst();
-        while(!c.isAfterLast()){
+        while(c.moveToNext()){
             Map<String,String> map = new HashMap<>();
-            map.put(Words.Word._ID,c.getString(1));
-            map.put(Words.Word.COLUMN_NAME_WORD,c.getString(2));
+            map.put(Words.Word._ID,String.valueOf(c.getInt(0)));
+            map.put(Words.Word.COLUMN_NAME_WORD,c.getString(1));
             arr.add(map);
         }
         return arr;

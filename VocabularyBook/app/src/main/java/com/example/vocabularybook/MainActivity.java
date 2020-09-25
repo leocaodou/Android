@@ -69,12 +69,14 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
     }
 
     private void ChangeWordDetailFragment(String id){
-        Bundle arguments = new Bundle();
-        arguments.putString(WordDetailFragment.ARG_ID,id);
-        Log.v(TAG,id);
-        WordDetailFragment fragment = new WordDetailFragment();
-        fragment.setArguments(arguments);
-        getSupportFragmentManager().beginTransaction().replace(R.id.worddetail,fragment).commit();
+        if(id!=null) {
+            Bundle arguments = new Bundle();
+            arguments.putString(WordDetailFragment.ARG_ID, id);
+            Log.v(TAG, id);
+            WordDetailFragment fragment = new WordDetailFragment();
+            fragment.setArguments(arguments);
+            getSupportFragmentManager().beginTransaction().replace(R.id.worddetail, fragment).commit();
+        }
     }
 
     private void InsertDialog(){
@@ -119,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
     }
 
     private void UpdateDialog(final String strId,final String strWord,final String strMeaning,final String strSample){
-        final TableLayout tableLayout = (TableLayout) getLayoutInflater().inflate(R.layout.insert,null);
+        final LinearLayout tableLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.insert,null);
         ((EditText)tableLayout.findViewById(R.id.txtWord)).setText(strWord);
         ((EditText)tableLayout.findViewById(R.id.txtMeaning)).setText(strMeaning);
         ((EditText)tableLayout.findViewById(R.id.txtSample)).setText(strSample);
@@ -132,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
                         String strNewMeaning = ((EditText)tableLayout.findViewById(R.id.txtMeaning)).getText().toString();
                         String strNewSample = ((EditText)tableLayout.findViewById(R.id.txtSample)).getText().toString();
                         WordsDB wordsDB = WordsDB.getWordsDB();
-                        wordsDB.UpdateUseSql(strId,strNewWord,strNewMeaning,strNewSample);
+                        wordsDB.UpdateUseSql(Integer.valueOf(strId),strNewWord,strNewMeaning,strNewSample);
                         ReFreshWordItemFragment();
                     }
                 }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -151,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements WordItemFragment.
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String txtSearchWord = ((EditText) tableLayout.findViewById(R.id.txtSearchWord)).getText().toString();
-                        ReFreshWordItemFragment();
+                        ReFreshWordItemFragment(txtSearchWord);
                     }
                 })
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
