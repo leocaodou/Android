@@ -62,7 +62,6 @@ public class WordDetailFragment extends Fragment {
             textViewWordMeaning.setText("");
             textViewWordSample.setText("");
         }
-
         return view;
     }
 }
