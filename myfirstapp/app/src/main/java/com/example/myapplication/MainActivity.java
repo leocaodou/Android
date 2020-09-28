@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     Button bn1;
     Button bn2;
     Button bn3;
-    Button bn4,bn5,bn6,bn7,bn8,bn9,bn10,bn11;
+    Button bn4,bn5,bn6,bn7,bn8,bn9,bn10,bn11,bn12,bn13,bn14;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     private final static String SharedPreferenceFileName = "NI";
@@ -237,6 +238,25 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        bn12 = (Button) findViewById(R.id.buL);
+        bn12.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view) {
+                Uri uri = Uri.parse("content://com.example.vocabularybook.provider/words");
+                ContentValues values = new ContentValues();
+                values.put("word","liu");
+                getContentResolver().insert(uri,values);
+            }
+        });
+        bn13 = (Button) findViewById(R.id.buM);
+        bn13.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view) {
+                Uri uri = Uri.parse("content://com.example.vocabularybook.provider/words");
+                getContentResolver().delete(uri,"_id = ?",new String[] {"2"});
+            }
+        });
+
     }
     protected void onActivityResult(int requestCode,int resultCode,Intent data)
     {
