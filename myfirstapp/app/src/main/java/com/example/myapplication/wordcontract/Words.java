@@ -1,4 +1,4 @@
-package com.example.vocabularybook.wordcontract;
+package com.example.myapplication.wordcontract;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
@@ -10,7 +10,7 @@ public class Words {
     public static class WordItem{
         public int id;
         public String word;
-        public WordItem(int id,String word){
+        public WordItem(int id, String word){
             this.id=id;
             this.word=word;
         }
@@ -24,14 +24,14 @@ public class Words {
         public String word;
         public String meaning;
         public String sample;
-        public WordDescription(int id,String word,String meaning, String sample){
+        public WordDescription(int id, String word, String meaning, String sample){
             this.id=id;
             this.word=word;
             this.meaning=meaning;
             this.sample=sample;
         }
     }
-    public static abstract class Word implements BaseColumns{
+    public static abstract class Word implements BaseColumns {
         public static final String TABLE_NAME = "words";
         public static final String COLUMN_NAME_WORD = "word";
         public static final String COLUMN_NAME_MEANING = "meaning";

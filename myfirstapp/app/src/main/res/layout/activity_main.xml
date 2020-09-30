@@ -73,8 +73,7 @@
         android:text="拨打10086"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/buE"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintBottom_toTopOf="@+id/buE" />
     <Button
         android:id="@+id/buG"
         android:layout_width="wrap_content"
@@ -119,7 +118,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buJ"
-        tools:ignore="MissingConstraints"/>
+        />
     <Button
         android:id="@+id/buL"
         android:layout_width="wrap_content"
@@ -127,24 +126,81 @@
         android:text="添加一个单词"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buK"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintBottom_toTopOf="@+id/buF"
+        />
     <Button
         android:id="@+id/buM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="删除单词"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buL"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintLeft_toRightOf="@+id/buL"
+        app:layout_constraintBottom_toTopOf="@+id/buF"
+        />
     <Button
         android:id="@+id/buN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="修改单词"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/buM"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintRight_toLeftOf="@+id/buL"
+        app:layout_constraintBottom_toTopOf="@+id/buF"
+        />
+    <Button
+        android:id="@+id/buO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="启动service"
+        app:layout_constraintRight_toLeftOf="@+id/buF"
+        app:layout_constraintTop_toBottomOf="@+id/buN"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="35dp"
+        />
+    <Button
+        android:id="@+id/buP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="关闭service"
+        app:layout_constraintRight_toRightOf="@+id/buO"
+        app:layout_constraintTop_toBottomOf="@+id/buO"
+        />
+    <Button
+        android:id="@+id/buQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1+2加法"
+        app:layout_constraintRight_toRightOf="@+id/buO"
+        app:layout_constraintTop_toBottomOf="@+id/buP"
+        />
+    <Button
+        android:id="@+id/buR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5-3减法"
+        app:layout_constraintRight_toRightOf="@+id/buO"
+        app:layout_constraintTop_toBottomOf="@+id/buQ"
+        />
+    <Button
+        android:id="@+id/buS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2*6乘法"
+        app:layout_constraintRight_toRightOf="@+id/buO"
+        app:layout_constraintTop_toBottomOf="@+id/buR"
+        />
+    <Button
+        android:id="@+id/buT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6÷3减法"
+        app:layout_constraintRight_toRightOf="@+id/buO"
+        app:layout_constraintTop_toBottomOf="@+id/buS"
+        />
+    <Button
+        android:id="@+id/buU"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="到第二个功能界面"
+        app:layout_constraintLeft_toRightOf="@+id/buE"
+        app:layout_constraintTop_toBottomOf="@+id/buF"
+        android:layout_marginLeft="10dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,15 +4,21 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Service;
+import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.provider.ContactsContract;
+import android.provider.UserDictionary;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +27,8 @@ import android.widget.EditText;
 import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.myapplication.wordcontract.Words;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -37,14 +45,29 @@ public class MainActivity extends AppCompatActivity {
     Button bn1;
     Button bn2;
     Button bn3;
-    Button bn4,bn5,bn6,bn7,bn8,bn9,bn10,bn11,bn12,bn13,bn14;
+    Button bn4,bn5,bn6,bn7,bn8,bn9,bn10,bn11,bn12,bn13,bn14,bn15,bn16,bn17,bn18,bn19,bn20,bn21;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     private final static String SharedPreferenceFileName = "NI";
+    private static final String TAG="MyWordsTag";
+    private ContentResolver resolver;
+    MyService myService = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final ServiceConnection serviceConnection=new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                Log.v(TAG,"onServiceConnected");
+                myService=((MyService.LocalBinder)iBinder).getService();
+            }
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+                Log.v(TAG,"onServiceDisconnected");
+            }
+        };
+        resolver = this.getContentResolver();
         show = findViewById(R.id.num);
         bn1 = (Button) findViewById(R.id.buA);
         Log.v("MainActivity","这是onCreate()");
@@ -206,57 +229,136 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        bn11 = (Button) findViewById(R.id.buK);
-        preferences = getSharedPreferences(SharedPreferenceFileName,MODE_PRIVATE);
-        editor = preferences.edit();
-        bn11.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View view) {
-                Cursor cursor = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI,null,null,null,null);
-                while(cursor.moveToNext())
-                {
-                    String msg;
-                    String id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
-                    msg = "id" + id;
-                    String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-                    msg = msg + "name" + name;
-                    Cursor pns = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=" + id,null,null);
-                    while(pns.moveToNext())
-                    {
-                        String pn = pns.getString(pns.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                        msg = msg + "phone:" + pn;
-
-                    }
-                    Cursor emails = getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI,null,ContactsContract.CommonDataKinds.Email.CONTACT_ID + "=" + id,null,null);
-                    while(emails.moveToNext())
-                    {
-                        String email = emails.getString(emails.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
-                        msg = msg + "Email:" + email;
-
-                    }
-                    Log.v("TAG",msg);
-                }
-            }
-        });
+//        bn11 = (Button) findViewById(R.id.buK);
+//        preferences = getSharedPreferences(SharedPreferenceFileName,MODE_PRIVATE);
+//        editor = preferences.edit();
+//        bn11.setOnClickListener(new View.OnClickListener()
+//        {
+//            public void onClick(View view) {
+//                Cursor cursor = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI,null,null,null,null);
+//                while(cursor.moveToNext())
+//                {
+//                    String msg;
+//                    String id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+//                    msg = "id" + id;
+//                    String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+//                    msg = msg + "name" + name;
+//                    Cursor pns = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=" + id,null,null);
+//                    while(pns.moveToNext())
+//                    {
+//                        String pn = pns.getString(pns.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+//                        msg = msg + "phone:" + pn;
+//
+//                    }
+//                    Cursor emails = getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI,null,ContactsContract.CommonDataKinds.Email.CONTACT_ID + "=" + id,null,null);
+//                    while(emails.moveToNext())
+//                    {
+//                        String email = emails.getString(emails.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
+//                        msg = msg + "Email:" + email;
+//
+//                    }
+//                    Log.v("TAG",msg);
+//                }
+//            }
+//        });
         bn12 = (Button) findViewById(R.id.buL);
         bn12.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View view) {
-                Uri uri = Uri.parse("content://com.example.vocabularybook.provider/words");
+                String strWord="Banana";
+                String strMeaning="banana";
+                String strSample="This banana is very nice.";
                 ContentValues values = new ContentValues();
-                values.put("word","liu");
-                getContentResolver().insert(uri,values);
+                values.put(Words.Word.COLUMN_NAME_WORD, strWord);
+                values.put(Words.Word.COLUMN_NAME_MEANING, strMeaning);
+                values.put(Words.Word.COLUMN_NAME_SAMPLE, strSample);
+                Uri newUri = resolver.insert(Words.Word.CONTENT_URI, values);
             }
         });
         bn13 = (Button) findViewById(R.id.buM);
         bn13.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View view) {
-                Uri uri = Uri.parse("content://com.example.vocabularybook.provider/words");
-                getContentResolver().delete(uri,"_id = ?",new String[] {"2"});
+                String id="3";
+                Uri uri = Uri.parse(Words.Word.CONTENT_URI_STRING + "/" + id);
+                int result = resolver.delete(uri, null, null);
             }
         });
-
+        bn14 = (Button) findViewById(R.id.buN);
+        bn14.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view) {
+                String id="3";
+                String strWord="Banana";
+                String strMeaning="banana";
+                String strSample="This banana is very nice.";
+                ContentValues values = new ContentValues();
+                values.put(Words.Word.COLUMN_NAME_WORD, strWord);
+                values.put(Words.Word.COLUMN_NAME_MEANING, strMeaning);
+                values.put(Words.Word.COLUMN_NAME_SAMPLE, strSample);
+                Uri uri = Uri.parse(Words.Word.CONTENT_URI_STRING + "/" + id);
+                int result = resolver.update(uri, values, null, null);
+            }
+        });
+        bn15 = (Button) findViewById(R.id.buO);
+        bn15.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,MyService.class);
+                bindService(intent,serviceConnection, Service.BIND_AUTO_CREATE);
+            }
+        });
+        bn16 = (Button) findViewById(R.id.buP);
+        bn16.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view) {
+                unbindService(serviceConnection);
+            }
+        });
+        bn17 = (Button) findViewById(R.id.buQ);
+        bn17.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view) {
+                if(myService!=null){
+                    Log.v(TAG,"1 + 2 = "+myService.add(1,2));
+                }
+            }
+        });
+        bn18 = (Button) findViewById(R.id.buR);
+        bn18.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view) {
+                if(myService!=null){
+                    Log.v(TAG,"5 - 3 = "+myService.sub(5,3));
+                }
+            }
+        });
+        bn19 = (Button) findViewById(R.id.buS);
+        bn19.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view) {
+                if(myService!=null){
+                    Log.v(TAG,"2 * 6 = "+myService.mul(2,6));
+                }
+            }
+        });
+        bn20 = (Button) findViewById(R.id.buT);
+        bn20.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view) {
+                if(myService!=null){
+                    Log.v(TAG,"6 ÷ 3 = "+myService.div(6,3));
+                }
+            }
+        });
+        bn21 = (Button) findViewById(R.id.buU);
+        bn21.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                startActivityForResult(intent,0);
+            }
+        });
     }
     protected void onActivityResult(int requestCode,int resultCode,Intent data)
     {
