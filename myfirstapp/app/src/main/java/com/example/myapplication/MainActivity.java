@@ -363,6 +363,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode,int resultCode,Intent data)
     {
         super.onActivityResult(requestCode,resultCode,data);
+        if(data == null)
+            return;
+        else
         if(requestCode == 0 && resultCode == 0)
         {
             String str = data.getStringExtra("result");

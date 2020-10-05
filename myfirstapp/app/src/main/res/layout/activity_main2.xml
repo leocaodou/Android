@@ -21,5 +21,19 @@
         android:layout_height="wrap_content"
         android:text="判断是否为素数"
         android:id="@+id/bu1"/>
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我们去画画吧"
+        android:id="@+id/bu3"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="拍照"
+        android:id="@+id/bu2"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="拍照"
+        android:id="@+id/img"/>
 </LinearLayout>
