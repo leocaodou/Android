@@ -17,42 +17,48 @@ public class CustomView extends View {
     private float startY = -1;
     private float endX = -1;
     private float endY = -1;
-    private Bitmap bitmap = null;
+    private int isDowm = 0;
+    private int y = 0;
+    private Paint paint;
+    private Path path;
+    private Path mpath;
     public CustomView(Context context, AttributeSet attrs) {
         super(context,attrs);
-        bitmap = Bitmap.createBitmap(getWidth(),getHeight(),Bitmap.Config.ARGB_8888);
+        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(5);
+        path = new Path();
+        mpath = new Path();
+    }
+    public CustomView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
     }
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawColor(Color.WHITE);
-        canvas.drawBitmap(HandWriting(bitmap), 0, 0,null);
-    }
-    public Bitmap HandWriting(Bitmap bm){
-        Canvas canvas =new Canvas(bm);
-        Paint paint = new Paint();
-        if(startX != -1 && startY != -1) {
-            canvas.drawLine(startX, startY, endX, endY, paint);
-            startX = -1;
-            startY = -1;
-        }
-        return bm;
+        canvas.drawPath(path, paint);
+        canvas.drawPath(mpath,paint);
+        mpath.reset();
     }
     public boolean onTouchEvent(MotionEvent event){
         if(event.getAction() == MotionEvent.ACTION_DOWN){
-            if(startX == -1 && startY == -1){
-                startX = event.getX();
-                startY = event.getY();
-                invalidate();
-                return true;
-            }
+            startX = event.getX();
+            startY = event.getY();
+            path.moveTo(event.getX(),event.getY());
+            isDowm = 1;
         }
         else if(event.getAction() == MotionEvent.ACTION_UP){
-            endX = event.getX();
-            endY = event.getY();
+            path.lineTo(event.getX(),event.getY());
+            isDowm = 0;
             invalidate();
             return true;
         }
-        return super.onTouchEvent(event);
+        else if(event.getAction() == MotionEvent.ACTION_MOVE && isDowm == 1){
+            mpath.moveTo(startX,startY);
+            mpath.lineTo(event.getX(),event.getY());
+            invalidate();
+            return true;
+        }
+        return true;
     }
 }

@@ -33,7 +33,12 @@
         android:id="@+id/bu2"/>
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="拍照"
+        android:layout_height="wrap_content"
         android:id="@+id/img"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="aa"
+        android:textSize="100dp"
+        android:background="@drawable/red_radius"/>
 </LinearLayout>
