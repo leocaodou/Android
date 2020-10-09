@@ -67,7 +67,7 @@ public class WordItemFragment extends ListFragment {
             }
         }
     }
-
+    @Override
     public void onListItemClick(ListView l, View v,int position,long id){
         super.onListItemClick(l,v,position,id);
         if(mListener != null){
@@ -89,7 +89,6 @@ public class WordItemFragment extends ListFragment {
         super.onCreateContextMenu(menu,v,menuInfo);
         getActivity().getMenuInflater().inflate(R.menu.contextmenu_wordslistview,menu);
     }
-
     public boolean onContextItemSelected(MenuItem item){
         TextView textId = null;
         TextView textWord = null;
