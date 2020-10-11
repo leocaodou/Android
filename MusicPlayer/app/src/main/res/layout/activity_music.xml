@@ -24,7 +24,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="暂停"
+            android:text="暂停/播放"
             android:textSize="30dp"
             android:id="@+id/pause"/>
         <Button
@@ -34,11 +34,10 @@
             android:textSize="30dp"
             android:id="@+id/next"/>
     </LinearLayout>
-    <View
 
-        android:layout_width="350dp"
-        android:layout_height="1dp"
-        android:background="#000000"
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/line"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -71,13 +70,16 @@
             android:id="@+id/total"
             />
     </LinearLayout>
-    <View
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:background="@drawable/circle"
-        app:layout_constraintStart_toStartOf="@+id/line"
-        app:layout_constraintTop_toTopOf="@+id/line"
-        app:layout_constraintBottom_toBottomOf="@+id/line"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="NULL"
+        android:textSize="30dp"
+        android:id="@+id/singer"
+        app:layout_constraintBottom_toTopOf="@+id/line"
+        android:layout_marginBottom="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -85,10 +87,10 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="NULL"
-        android:textSize="50dp"
+        android:textSize="55dp"
         android:id="@+id/name"
-        app:layout_constraintBottom_toTopOf="@+id/line"
-        android:layout_marginBottom="20dp"/>
+        app:layout_constraintBottom_toTopOf="@+id/singer"
+        />
 
     <ImageView
         android:layout_width="250dp"
@@ -97,6 +99,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/name"
-        android:layout_marginBottom="75dp"/>
+        android:layout_marginBottom="65dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
