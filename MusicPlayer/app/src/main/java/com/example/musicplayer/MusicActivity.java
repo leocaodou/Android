@@ -75,6 +75,12 @@ public class MusicActivity extends AppCompatActivity {
                 }
             }
         });
+        mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(MediaPlayer mp, int what, int extra) {
+                return true;
+            }
+        });
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -112,7 +118,7 @@ public class MusicActivity extends AppCompatActivity {
                     case 1:
                     case 2:
                         position--;
-                        if(position == 0)
+                        if(position == -1)
                             position = musics.size() - 1;
                         Music music = musics.get(position);
                         setMusic(music);
