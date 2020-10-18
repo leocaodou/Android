@@ -14,6 +14,8 @@ public class PlayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         ChessBoard chesss=new ChessBoard(this);
+        chesss.setY(this.getResources().getDisplayMetrics().heightPixels/4);
+        chesss.setX(this.getResources().getDisplayMetrics().widthPixels/20);
         setContentView(chesss);
     }
 }

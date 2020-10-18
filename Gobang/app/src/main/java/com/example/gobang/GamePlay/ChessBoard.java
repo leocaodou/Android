@@ -2,19 +2,24 @@ package com.example.gobang.GamePlay;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
+
+import androidx.core.content.ContextCompat;
+
+import com.example.gobang.R;
 
 public class ChessBoard extends View {
     public int w;
     public int h;
-    PaintBoard hua;
+    PaintBoard draw;
 
     public ChessBoard(Context context) {
         super(context);
-        w = context.getResources().getDisplayMetrics().widthPixels;
-        h = context.getResources().getDisplayMetrics().heightPixels;
-        hua=new PaintBoard(this);
+        w = context.getResources().getDisplayMetrics().widthPixels*9/10;
+        h = context.getResources().getDisplayMetrics().heightPixels/2;
+        draw=new PaintBoard(this);
     }
 
     @Override
@@ -25,9 +30,9 @@ public class ChessBoard extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         //绘制线
-        hua.DrawLine(canvas);
+        draw.DrawLine(canvas);
         //绘制棋子
-        hua.DrawPoint(canvas);
+        draw.DrawPoint(canvas);
         invalidate();
     }
 
@@ -37,7 +42,7 @@ public class ChessBoard extends View {
             /// int event=(int)event.GetX()
             int eventx=(int)event.getX();
             int eventy=(int)event.getY();
-            hua.setGo(eventx,eventy);
+            draw.setGo(eventx,eventy);
         }
         return true;
     }
