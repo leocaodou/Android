@@ -1,9 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlayActivity">
+    tools:context=".PlayActivity"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="#FFFFFF">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/comprofile"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    </LinearLayout>
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:src="@drawable/frame"
+    android:id="@+id/frame1"
+    />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="-20dp"
+        android:layout_marginBottom="-75dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="380dp"
+            android:src="@drawable/frame2"
+            android:layout_marginLeft="-22dp"
+            android:layout_marginRight="-13dp"/>
+        <com.example.gobang.GamePlay.ChessBoard
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:id="@+id/chessboard"
+            android:layout_marginRight="-25dp"
+            android:gravity="top"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="380dp"
+            android:src="@drawable/frame2"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            />
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/frame"
+        android:id="@+id/frame2"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:layout_gravity="right"
+        android:layout_marginTop="-20dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/userprofile"
+            />
+    </LinearLayout>
+</LinearLayout>

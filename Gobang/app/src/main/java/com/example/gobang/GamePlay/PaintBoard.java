@@ -10,12 +10,12 @@ import java.util.List;
 
 public class PaintBoard {
     private int w, h;
-    private final int jianju = 50;
+    private final int jianju = 62;
     private int numline, numcolumn;
 
     private Paint paint;
 
-    private final int radius = 15;
+    private final int radius = 20;
     private int cx, cy;
     private int cLine, cColumn;
     private boolean isBlack;
@@ -59,12 +59,10 @@ public class PaintBoard {
             }
         }
         list.add(new Point(cx, cy));
-
     }
 
     public void DrawLine(Canvas canvas) {
 
-        canvas.drawColor(Color.GRAY);
         paint.setColor(Color.BLACK);
         int i = 0;
         for (i = 0; i <= numline; i++) {

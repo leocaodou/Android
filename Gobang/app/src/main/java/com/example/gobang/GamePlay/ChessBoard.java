@@ -3,6 +3,7 @@ package com.example.gobang.GamePlay;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -20,8 +21,19 @@ public class ChessBoard extends View {
         w = context.getResources().getDisplayMetrics().widthPixels*9/10;
         h = context.getResources().getDisplayMetrics().heightPixels/2;
         draw=new PaintBoard(this);
+        this.setBackgroundResource(R.drawable.wood);
     }
-
+    public ChessBoard(Context context, AttributeSet attrs)
+    {
+        super(context,attrs);
+        w = context.getResources().getDisplayMetrics().widthPixels*9/10;
+        h = context.getResources().getDisplayMetrics().heightPixels/2;
+        draw=new PaintBoard(this);
+        this.setBackgroundResource(R.drawable.wood);
+    }
+    public ChessBoard(Context context, AttributeSet attrs,int defStyle){
+        super(context,attrs,defStyle);
+    }
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         setMeasuredDimension(w, h);
