@@ -4,13 +4,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PaintBoard {
     private int w, h;
-    private final int jianju = 62;
+    private final int jianju = 58;
     private int numline, numcolumn;
 
     private Paint paint;
@@ -20,13 +21,13 @@ public class PaintBoard {
     private int cLine, cColumn;
     private boolean isBlack;
     private List<Point> list;
-
+    private Douai douai= new Douai();
     public PaintBoard(ChessBoard cb) {
         this.w = cb.w;
         this.h = cb.h;
 
         numline = h / jianju;
-        numcolumn = w / jianju;
+        numcolumn = 15;
         paint = new Paint();
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(4);
@@ -50,6 +51,7 @@ public class PaintBoard {
             cLine += 1;
             cColumn += 1;
         }
+        Log.v("test","x为"+cLine+"y为"+cColumn);
         cx = cColumn * jianju;
         cy = cLine * jianju;
         for (int i = 0; i < list.size(); i++) {
@@ -59,6 +61,10 @@ public class PaintBoard {
             }
         }
         list.add(new Point(cx, cy));
+        douai.Player(cLine,cColumn);
+        Point p = douai.setGo();
+        list.add(new Point(p.y*jianju,p.x*jianju));
+        Log.v("test","yes");
     }
 
     public void DrawLine(Canvas canvas) {
@@ -82,5 +88,13 @@ public class PaintBoard {
             p=list.get(i);
             canvas.drawCircle(p.x, p.y, radius, paint);
         }
+    }
+    public void delete() {
+        if (list.size() >= 2){
+            list.remove(list.size() - 1);
+            list.remove(list.size() - 1);
+            douai.back();
+        }
+
     }
 }

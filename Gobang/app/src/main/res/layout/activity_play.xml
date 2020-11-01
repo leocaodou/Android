@@ -19,7 +19,7 @@
         />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         />
     </LinearLayout>
 <ImageView
@@ -27,13 +27,15 @@
     android:layout_height="wrap_content"
     android:src="@drawable/frame"
     android:id="@+id/frame1"
+    android:layout_marginTop="-35dp"
     />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="-20dp"
-        android:layout_marginBottom="-75dp">
+        android:layout_marginBottom="-75dp"
+        android:layout_marginLeft="12dp">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="380dp"
@@ -45,7 +47,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:id="@+id/chessboard"
-            android:layout_marginRight="-25dp"
+            android:layout_marginRight="-30dp"
             android:gravity="top"/>
         <ImageView
             android:layout_width="wrap_content"
@@ -60,22 +62,38 @@
         android:src="@drawable/frame"
         android:id="@+id/frame2"
         />
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:orientation="horizontal"
-        android:layout_marginTop="-15dp">
+        >
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src=""
+            android:src="@drawable/regret"
+            android:background="#FFFFFF"
+            android:id="@+id/regret"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             />
-        
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/lose"
+            android:background="#FFFFFF"
+            android:id="@+id/lose"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/player"
+            />
         <ImageView
+            app:layout_constraintRight_toRightOf="parent"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:src="@drawable/userprofile"
-            android:layout_weight=""
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/player"
             />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
