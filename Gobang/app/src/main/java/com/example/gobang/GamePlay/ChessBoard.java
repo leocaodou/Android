@@ -17,14 +17,15 @@ public class ChessBoard extends View {
     PaintBoard draw;
     Context context;
     private OnClickListener mListener;
-    public static abstract interface  OnClickListener{
+    public interface  OnClickListener{
 
-        public abstract void onClick(); //单击事件处理接口
+        public void onBoardClick(); //单击事件处理接口
 
     }
     public ChessBoard(Context context) {
         super(context);
         this.context = context;
+        mListener = (OnClickListener) context;
         w = context.getResources().getDisplayMetrics().widthPixels*9/10;
         h = context.getResources().getDisplayMetrics().heightPixels/2;
         draw=new PaintBoard(this);
@@ -34,7 +35,7 @@ public class ChessBoard extends View {
     {
         super(context,attrs);
         this.context = context;
-
+        mListener = (OnClickListener) context;
         w = context.getResources().getDisplayMetrics().widthPixels*9/10-55;
         h = context.getResources().getDisplayMetrics().heightPixels/2;
         draw=new PaintBoard(this);
@@ -63,13 +64,12 @@ public class ChessBoard extends View {
             int eventx=(int)event.getX();
             int eventy=(int)event.getY();
             draw.setGo(eventx,eventy);
+            if(mListener!= null)
+                mListener.onBoardClick();
         }
         return true;
     }
 
-    public void setOnClickListener(OnClickListener l) {
-        mListener = l;
-    }
 
     public void Regret(){
         draw.delete();

@@ -22,6 +22,7 @@ public class PaintBoard {
     private boolean isBlack;
     private List<Point> list;
     private Douai douai= new Douai();
+    private boolean win;
     public PaintBoard(ChessBoard cb) {
         this.w = cb.w;
         this.h = cb.h;
@@ -62,6 +63,9 @@ public class PaintBoard {
         }
         list.add(new Point(cx, cy));
         douai.Player(cLine,cColumn);
+        if(douai.GameOver()){
+
+        }
         Point p = douai.setGo();
         list.add(new Point(p.y*jianju,p.x*jianju));
         Log.v("test","yes");
