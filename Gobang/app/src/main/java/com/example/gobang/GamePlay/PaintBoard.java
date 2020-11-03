@@ -16,7 +16,6 @@ public class PaintBoard {
 
     private Paint paint;
 
-    private final int radius = 20;
     private int cx, cy;
     private int cLine, cColumn;
     private boolean isBlack;
@@ -35,7 +34,7 @@ public class PaintBoard {
         list = new ArrayList<Point>();
     }
 
-    public void setGo(int eventx, int eventy) {
+    public int setGo(int eventx, int eventy) {
         cColumn = eventx / jianju;
         cLine = eventy / jianju;
 
@@ -58,17 +57,21 @@ public class PaintBoard {
         for (int i = 0; i < list.size(); i++) {
             Point p = list.get(i);
             if (p.x == cx && p.y == cy) {
-                return;
+                return -1;
             }
         }
         list.add(new Point(cx, cy));
         douai.Player(cLine,cColumn);
         if(douai.GameOver()){
-
+            return 1;
         }
         Point p = douai.setGo();
         list.add(new Point(p.y*jianju,p.x*jianju));
+        if(douai.GameOver()){
+            return 2;
+        }
         Log.v("test","yes");
+        return 0;
     }
 
     public void DrawLine(Canvas canvas) {
@@ -90,6 +93,7 @@ public class PaintBoard {
         for (int i = 0; i < list.size(); i++) {
             paint.setColor(i%2==1?Color.BLACK:Color.WHITE);
             p=list.get(i);
+            int radius = 20;
             canvas.drawCircle(p.x, p.y, radius, paint);
         }
     }

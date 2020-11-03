@@ -12,9 +12,9 @@ import android.widget.ImageView;
 import com.example.gobang.GamePlay.ChessBoard;
 
 public class PlayActivity extends AppCompatActivity implements ChessBoard.OnClickListener{
-    ImageView frame1,frame2,frame3,frame4;
+    ImageView robot;
     ChessBoard chessBoard;
-    ImageButton regret;
+    ImageButton regret,end;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,13 +26,34 @@ public class PlayActivity extends AppCompatActivity implements ChessBoard.OnClic
             @Override
             public void onClick(View v) {
                 chessBoard.Regret();
+                robot.setImageDrawable(getResources().getDrawable(R.drawable.hello));
             }
         });
-
+        robot = (ImageView)findViewById(R.id.robot);
+        robot.setImageDrawable(getResources().getDrawable(R.drawable.hello));
+        end = (ImageButton)findViewById(R.id.lose);
+        end.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                robot.setImageDrawable(getResources().getDrawable(R.drawable.vegetables));
+                chessBoard.locked();
+            }
+        });
     }
 
     @Override
-    public void onBoardClick() {
-
+    public void onBoardClick(int x) {
+        switch (x) {
+            case -1:
+            case 0:
+                return;
+            case 1:
+                robot.setImageDrawable(getResources().getDrawable(R.drawable.six));
+                chessBoard.locked();
+                return;
+            case 2:
+                robot.setImageDrawable(getResources().getDrawable(R.drawable.vegetables));
+                chessBoard.locked();
+        }
     }
 }

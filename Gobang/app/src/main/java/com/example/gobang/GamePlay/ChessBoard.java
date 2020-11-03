@@ -17,9 +17,10 @@ public class ChessBoard extends View {
     PaintBoard draw;
     Context context;
     private OnClickListener mListener;
+    private boolean lock = false;
     public interface  OnClickListener{
 
-        public void onBoardClick(); //单击事件处理接口
+        public void onBoardClick(int x); //单击事件处理接口
 
     }
     public ChessBoard(Context context) {
@@ -60,19 +61,24 @@ public class ChessBoard extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction()==MotionEvent.ACTION_DOWN){
+        if (event.getAction()==MotionEvent.ACTION_DOWN && !lock){
             int eventx=(int)event.getX();
             int eventy=(int)event.getY();
-            draw.setGo(eventx,eventy);
             if(mListener!= null)
-                mListener.onBoardClick();
+                mListener.onBoardClick(draw.setGo(eventx,eventy));
         }
         return true;
     }
 
-
+    public void locked(){
+        lock = true;
+    }
+    public void unlocked(){
+        lock = false;
+    }
     public void Regret(){
         draw.delete();
+        unlocked();
         invalidate();
     }
 }
