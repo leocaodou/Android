@@ -214,6 +214,8 @@ public class evaluate {
                                 return "输入错误";
                             BigDecimal sc = (BigDecimal) num.peek();
                             num.pop();
+                            if(op.peek().toString().equals("÷") && first.equals(new BigDecimal("0")))
+                                return "错误！除数为0";
                             BigDecimal x = operate(sc, first, (char) op.peek());//运算
                             op.pop();//删除运算了后的符号
                             num.push(x);

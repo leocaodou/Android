@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.example.calculator.eva.evaluate;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigDecimal;
 import java.util.Stack;
 
@@ -473,7 +475,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState){
+    public void onSaveInstanceState(@NotNull Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putString("show1",show1.getText().toString());
         savedInstanceState.putString("show2",show2.getText().toString());
